@@ -64,20 +64,26 @@ public class PurchaseOrder {
 	}
 	
 	public PurchaseOrder() {
-		super();
+
 	}
-	public PurchaseOrder(int customerNo, Date orderDate) {
-		super();
+	public PurchaseOrder(int customerNo,Date orderDate) {
 		this.customerNo = customerNo;
 		this.orderDate = orderDate;
 	}
+
+	public PurchaseOrder(int orderId, int customerNo, Date orderDate) {
+		this.orderId = orderId;
+		this.customerNo = customerNo;
+		this.orderDate = orderDate;
+	}
+
 	public PurchaseOrder(int customerNo) {
-		super();
+
 		this.customerNo = customerNo;
 		Date date = new Date();
 		orderDate = date;
 		
 		
 	}
-	
+
 }

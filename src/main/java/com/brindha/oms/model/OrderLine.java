@@ -32,7 +32,7 @@ public class OrderLine {
     @OneToOne
     @JoinColumn(name="UPC",insertable=false,nullable=false,updatable=false)
     Products products;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	public int getOrderItemNumber() {
@@ -67,7 +67,8 @@ public class OrderLine {
 		this.numberOfItems = numberOfItems;
 	
 	}
-	public OrderLine(int numberOfItems, int orderId) {
+
+		public OrderLine(int numberOfItems, int orderId) {
 		super();
 		this.numberOfItems = numberOfItems;
 		this.orderId = orderId;
@@ -84,9 +85,14 @@ public class OrderLine {
 		return "OrderLine [orderItemNumber=" + orderItemNumber + ", uPC=" + uPC + ", numberOfItems=" + numberOfItems
 				+ ", orderId=" + orderId + "]";
 	}
-	
 
+	public OrderLine(int orderItemNumber, int uPC, int numberOfItems, int orderId) {
+		this.orderItemNumber = orderItemNumber;
+		this.uPC = uPC;
+		this.numberOfItems = numberOfItems;
+		this.orderId = orderId;
 
+	}
 }
 
 

@@ -15,29 +15,18 @@ public class OmsPurchaseOrderService {
 	OmsPurchaseOrderRepository omsPurchaseOrderRepository;
 	
 	// CREATE 
-    public PurchaseOrder createPurchaseOrder(PurchaseOrder prod) {
-        return omsPurchaseOrderRepository.save(prod);
+    public PurchaseOrder createPurchaseOrder(PurchaseOrder po){
+
+       return omsPurchaseOrderRepository.save(po);
     }
 
     // READ
     public List<PurchaseOrder> getPurchaseOrder() {
+
         return omsPurchaseOrderRepository.findAll();
     }
 
-//    // DELETE
-//    public void deletePurchaseOrder(int orderId) {
-//    	omsPurchaseOrderRepository.deleteById(orderId);
-//    }
-//    
-//    // UPDATE
-//    public PurchaseOrder updatePurchaseOrder(int orderId, PurchaseOrder poDetails) {
-//    		PurchaseOrder po = omsPurchaseOrderRepository.findById(orderId).get();
-//            po.setCustomerNo(poDetails.getCustomerNo());
-//            po.setOrderDate(poDetails.getOrderDate());                      
-//            return omsPurchaseOrderRepository.save(po);                                
-//    }
-//	
-//	
+
 	
 }
 

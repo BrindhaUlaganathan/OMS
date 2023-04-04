@@ -1,7 +1,6 @@
 package com.brindha.oms.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,12 +27,10 @@ public class OmsCustomerService{// implements IcustomerService {
         return omsCustomerRepository.findAll();
     }
     //Get a customer by Id
-    
    
     public Customer findById(int customerNo) {
         return omsCustomerRepository.findById(customerNo);
     }
-
     // DELETE
     public void deleteCustomer(int customerId) {
     	omsCustomerRepository.deleteById(customerId);
@@ -46,7 +43,5 @@ public class OmsCustomerService{// implements IcustomerService {
             cust.setMobile(customerDetails.getMobile());          
             return omsCustomerRepository.save(cust);                                
     }
-	
-	
-	
+
 }
