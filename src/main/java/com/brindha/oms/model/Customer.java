@@ -1,5 +1,6 @@
 package com.brindha.oms.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
@@ -30,6 +31,9 @@ public class Customer {
 	private String name;
 	@Column(name="mobile")
 	private String mobile;
+
+	@OneToMany(mappedBy = "customer",cascade=CascadeType.ALL,orphanRemoval = true)
+	private List<PurchaseOrder> purchaseOrder=new ArrayList<>();
 
 	public int getCustomerNo() {
 		return customerNo;

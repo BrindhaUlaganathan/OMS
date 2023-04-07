@@ -1,7 +1,10 @@
 package com.brindha.oms.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.brindha.oms.model.OrderLine;
+import com.brindha.oms.repository.OmsOrderLineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +16,22 @@ import com.brindha.oms.repository.OmsPurchaseOrderRepository;
 public class OmsPurchaseOrderService {
 	@Autowired
 	OmsPurchaseOrderRepository omsPurchaseOrderRepository;
-	
-	// CREATE 
-    public PurchaseOrder createPurchaseOrder(PurchaseOrder po){
+    @Autowired
+    OmsOrderLineRepository omsOrderLineRepository;
+    @Autowired
+    OmsProductService omsProductService;
 
-       return omsPurchaseOrderRepository.save(po);
-    }
+        // CREATE
+        public PurchaseOrder createPurchaseOrder(PurchaseOrder order) {
+            PurchaseOrder po = omsPurchaseOrderRepository.save(order);
+            OrderLine ol= new OrderLine(order.getOrderId());
+            String prodName = omsProductService.findById(ol.getuPC());
+            omsOrderLineRepository.save(ol);
+            return po;
+        }
+
+
+
 
     // READ
     public List<PurchaseOrder> getPurchaseOrder() {
@@ -26,8 +39,14 @@ public class OmsPurchaseOrderService {
         return omsPurchaseOrderRepository.findAll();
     }
 
+    public Optional<PurchaseOrder> getPurchaseOrderById(int orderId) {
 
-	
+        return omsPurchaseOrderRepository.findById(orderId);
+    }
+
+
+
+
 }
 
 

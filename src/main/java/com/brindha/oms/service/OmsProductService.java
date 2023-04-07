@@ -43,8 +43,8 @@ public class OmsProductService {
             
             return omsProdRepository.save(prod);                                
     }
-	public Products findById(int uPC) {
+	public String findById(int uPC) {
 		Products prod = omsProdRepository.findById(uPC);
-		return prod;
+		return prod.getProdDescription();
 	}
 }

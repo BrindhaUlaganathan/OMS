@@ -29,29 +29,29 @@ public class PlacingOrderService {
 	@Autowired
 	private OmsOrderLineService omsOrderLineService;
 	
-	public OrderAcknowledgement placeOrder(@RequestBody PlacingOrder placingOrder) {
-		
-			Customer custPlacingOrder = omsCustomerservice
-											.findById(placingOrder.getcustomerNo());
-			
-		    Products orderedProduct = omsProductservice
-											.findById(placingOrder.getuPC());
+//	public OrderAcknowledgement placeOrder(@RequestBody PlacingOrder placingOrder) {
 
-			PurchaseOrder po= new PurchaseOrder(placingOrder.getcustomerNo());
-			omsPurchaseOrderservice.createPurchaseOrder(po);
+//			Customer custPlacingOrder = omsCustomerservice
+//											.findById(placingOrder.getcustomerNo());
+//
+//		    Products orderedProduct = omsProductservice
+//											.findById(placingOrder.getuPC());
+//
+//			PurchaseOrder po= new PurchaseOrder(placingOrder.getcustomerNo());
+//			omsPurchaseOrderservice.createPurchaseOrder(po);
+//
+//			OrderLine ol= new OrderLine(placingOrder.getuPC(),placingOrder.getNoOfItems(), po.getOrderId());
+//			omsOrderLineService.createOrderLine(ol);
+//
+//
+//
+//			return new OrderAcknowledgement(custPlacingOrder.getName(),
+//											po.getOrderId(),
+//											po.getOrderDate(),
+//											orderedProduct.getProdDescription(),
+//											placingOrder.getNoOfItems(),
+//											ol.getOrderItemNumber());
+//
 
-			OrderLine ol= new OrderLine(placingOrder.getuPC(),placingOrder.getNoOfItems(), po.getOrderId());
-			omsOrderLineService.createOrderLine(ol);
-
-			
-			
-			return new OrderAcknowledgement(custPlacingOrder.getName(),
-											po.getOrderId(),
-											po.getOrderDate(),
-											orderedProduct.getProdDescription(),
-											placingOrder.getNoOfItems(),
-											ol.getOrderItemNumber());
-			
-		
+		//}
 	}
-}	

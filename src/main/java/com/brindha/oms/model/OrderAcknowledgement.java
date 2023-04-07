@@ -1,5 +1,6 @@
 package com.brindha.oms.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.brindha.oms.model.Customer;
@@ -8,7 +9,7 @@ public class OrderAcknowledgement {
 	
 	private String custName;
 	private int orderID;
-	private Date orderDate;
+	private LocalDate orderDate;
 	private String productName;
 	private int quantityOrdered;
 	private int orderLineId;
@@ -36,11 +37,11 @@ public class OrderAcknowledgement {
 		this.orderID = orderID;
 	}
 
-	public Date getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 	
@@ -62,7 +63,7 @@ public class OrderAcknowledgement {
 
 	
 		
-	public OrderAcknowledgement(String custName, int orderID, Date orderDate, String productName, int quantityOrdered) {
+	public OrderAcknowledgement(String custName, int orderID, LocalDate orderDate, String productName, int quantityOrdered) {
 		super();
 		this.custName = custName;
 		this.orderID = orderID;
@@ -71,7 +72,7 @@ public class OrderAcknowledgement {
 		this.quantityOrdered = quantityOrdered;
 	}
 	
-	public OrderAcknowledgement(String custName, int orderID, Date orderDate, String productName, int quantityOrdered,
+	public OrderAcknowledgement(String custName, int orderID, LocalDate orderDate, String productName, int quantityOrdered,
 			int orderLineId) {
 		super();
 		this.custName = custName;

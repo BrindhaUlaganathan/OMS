@@ -11,5 +11,5 @@ import com.brindha.oms.model.PurchaseOrder;
 public interface OmsPurchaseOrderRepository extends JpaRepository<PurchaseOrder, Integer> {
 	List<PurchaseOrder> findAll();
 
-	
+	//PurchaseOrder findById();
 }

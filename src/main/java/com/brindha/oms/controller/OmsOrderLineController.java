@@ -17,13 +17,14 @@ public class OmsOrderLineController {
 
     @RequestMapping(value="/orderline", method= {RequestMethod.POST})
 
-    public OrderLine createOrderLineService(@RequestBody OrderLine ol) {
+    public OrderLine createOrderLine(@RequestBody OrderLine ol) {
         return omsOrderLineService.createOrderLine(ol);
     }
 
     @RequestMapping(value="/orderline", method=RequestMethod.GET)
-    public List<OrderLine> readOrderLineService() {
-        return omsOrderLineService.getOrderLine();
+    public List<OrderLine> readOrderLine() {
+        return
+                omsOrderLineService.getOrderLine();
     }
 
 

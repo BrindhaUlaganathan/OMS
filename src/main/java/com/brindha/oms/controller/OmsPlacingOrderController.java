@@ -16,8 +16,8 @@ public class OmsPlacingOrderController {
     private PlacingOrderService poservice;
 
 
-    @RequestMapping(value="/placeorder", method= {RequestMethod.POST})
-    public OrderAcknowledgement placeorder(@RequestBody PlacingOrder placingorderrequest) {
-        return  poservice.placeOrder(placingorderrequest);
-    }
+//    @RequestMapping(value="/placeorder", method= {RequestMethod.POST})
+//    public OrderAcknowledgement placeorder(@RequestBody PlacingOrder placingorderrequest) {
+//        return  poservice.placeOrder(placingorderrequest);
+//    }
 }

@@ -1,21 +1,15 @@
 package com.brindha.oms.model;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "purchaseorders")
+@Table(name = "purchaseorder")
 
 public class PurchaseOrder {
 	@Id
@@ -25,14 +19,14 @@ public class PurchaseOrder {
 	@Column(name="customer_no")
 	private int customerNo;
 	@Column(name="order_date")
-	private Date orderDate;
+	private LocalDate orderDate = LocalDate.now() ;
 	
-	@ManyToOne
-	@JoinColumn(name="customer_no",insertable=false,nullable=false,updatable=false)	
+	@ManyToOne//(fetch= FetchType.LAZY)
+	@JoinColumn(name="customer_no",insertable=false,nullable=false,updatable=false)
 	private Customer customer;
 
-//	@OneToMany(mappedBy = "order_id")
-//	private List<OrderLine> orderLine;
+	@OneToMany(mappedBy = "purchaseorder",cascade= CascadeType.ALL,orphanRemoval = true)
+	private List<OrderLine> orderLine =new ArrayList<>();
 	
 	public Customer getCustomer() {
 		return customer;
@@ -52,10 +46,10 @@ public class PurchaseOrder {
 	public void setCustomerNo(int customerNo) {
 		this.customerNo = customerNo;
 	}
-	public Date getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 	@Override
@@ -66,12 +60,12 @@ public class PurchaseOrder {
 	public PurchaseOrder() {
 
 	}
-	public PurchaseOrder(int customerNo,Date orderDate) {
+	public PurchaseOrder(int customerNo, LocalDate orderDate) {
 		this.customerNo = customerNo;
 		this.orderDate = orderDate;
 	}
 
-	public PurchaseOrder(int orderId, int customerNo, Date orderDate) {
+	public PurchaseOrder(int orderId, int customerNo, LocalDate orderDate) {
 		this.orderId = orderId;
 		this.customerNo = customerNo;
 		this.orderDate = orderDate;
@@ -80,10 +74,14 @@ public class PurchaseOrder {
 	public PurchaseOrder(int customerNo) {
 
 		this.customerNo = customerNo;
-		Date date = new Date();
-		orderDate = date;
-		
 		
 	}
 
+	public PurchaseOrder(int orderId, int customerNo, LocalDate orderDate, Customer customer, List<OrderLine> orderLine) {
+		this.orderId = orderId;
+		this.customerNo = customerNo;
+		this.orderDate = orderDate;
+		this.customer = customer;
+		this.orderLine = orderLine;
+	}
 }
